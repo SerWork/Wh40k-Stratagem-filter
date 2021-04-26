@@ -66,13 +66,16 @@ function checkMarksDefaultStyle() {
   }
 }
 
-function showFactionAddendumBlock(faction_name) {
-  hideFactionAddendumBlocks();
-  /* var get_default_option = document.getElementById('factions-addendum').getElementsByClassName('default-option');
+function setDefaultFactionAddendumOption() {
+  var get_default_option = document.getElementById('factions-addendum').getElementsByClassName('default-option');
 
   for (let i = 0; i < get_default_option.length; i++) {
     get_default_option[i].selected = true;
-  } */
+  }
+}
+
+function showFactionAddendumBlock(faction_name) {
+  hideFactionAddendumBlocks();
 
   if (faction_name == 'chaos-daemons') {
     document.getElementById('factions-addendum').style.display = 'flex';
@@ -190,17 +193,13 @@ function showDaemonAllegianceStratagems() {
 
 function showFactionStratagems() {
   var faction = getFactionName();
-  var get_default_option = document.getElementById('factions-addendum').getElementsByClassName('default-option');
 
   // set default style to stratagems select option
   checkMarksDefaultStyle();
   // Set "display" to "none" for all stratagems of all factions
   hideAllFactionsStratagemsBlocks();
-  hideFactionAddendumBlocks();
 
-  for (let i = 0; i < get_default_option.length; i++) {
-    get_default_option[i].selected = true;
-  }
+  hideFactionAddendumBlocks();
 
   if (faction == 'chaos-daemons') {
     showFactionAddendumBlock(faction);
@@ -208,7 +207,7 @@ function showFactionStratagems() {
   } else {  
     // remove :checked from stratagems select option
     uncheckCheckMarks();
-  
+
     // showFactionAddendumBlock(faction);
   
     // Show all selected faction stratagems
@@ -345,7 +344,7 @@ function showPhaseStratagems(faction_name, stratagem_type, phase_index) {
 
         // --- Chaos Daemons ---
         if (faction_name == 'chaos-daemons') {
-          /* var daemon_phase_string = stratagem_type.replace('.' + daemon_allegiance + '-daemons','');
+          var daemon_phase_string = stratagem_type.replace('.' + daemon_allegiance + '-daemons','');
 
           // Change stratagem type to ".all-daemons-<phase_name>"
           stratagem_type = '.all-daemons' + daemon_phase_string;
@@ -357,7 +356,7 @@ function showPhaseStratagems(faction_name, stratagem_type, phase_index) {
             for (let i = 0; i < show_stratagems.length; i++) {
               show_stratagems[i].style.display = 'block';
             }
-          } */
+          }
 
           // Change stratagem type to ".<daemon-allegiance>-daemons-any-phase"
           stratagem_type = '.' + daemon_allegiance + '-daemons-any-phase';
