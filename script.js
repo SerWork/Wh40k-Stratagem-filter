@@ -98,13 +98,13 @@ function showFactionAddendumBlock(faction_name) {
 }
 
 function showDaemonAllegianceStratagems() {
-  uncheckCheckMarks();
-
   var daemons_allegiance_stratagems;
   var allegiance = document.getElementById('chaos-daemons-allegiance').value;
   var stratagems_for_all_allegiance = document.getElementsByClassName('all-daemons-stratagem');
   var chaos_daemons_all_stratagems = document.getElementById('chaos-daemons').getElementsByClassName('stratagems-block__show-when-faction-unselected');
-
+  
+  uncheckCheckMarks();
+  checkMarksDefaultStyle();
   // var all_daemons_before_battle = document.getElementById('chaos-daemons').getElementsByClassName('all-daemons-before-battle');
   // var all_daemons_command_phase;
   // var all_daemons_movement_phase = document.getElementsByClassName('all-daemons-movement-phase');
@@ -139,6 +139,7 @@ function showDaemonAllegianceStratagems() {
     // showFactionStratagems();
     if (chaos_daemons_all_stratagems.length > 0) {
       document.getElementById('chaos-daemons').style.display = 'block';
+
       for (let i = 0; i < chaos_daemons_all_stratagems.length; i++) {
         chaos_daemons_all_stratagems[i].style.display = 'block';
       }
@@ -189,12 +190,17 @@ function showDaemonAllegianceStratagems() {
 
 function showFactionStratagems() {
   var faction = getFactionName();
+  var get_default_option = document.getElementById('factions-addendum').getElementsByClassName('default-option');
 
   // set default style to stratagems select option
   checkMarksDefaultStyle();
   // Set "display" to "none" for all stratagems of all factions
   hideAllFactionsStratagemsBlocks();
   hideFactionAddendumBlocks();
+
+  for (let i = 0; i < get_default_option.length; i++) {
+    get_default_option[i].selected = true;
+  }
 
   if (faction == 'chaos-daemons') {
     showFactionAddendumBlock(faction);
