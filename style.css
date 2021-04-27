@@ -64,6 +64,10 @@ hr {
 #factions-addendum #chaos-daemons-allegiance {
   background-color: #60c;
 }
+#factions-addendum #orks-addendum-select {
+  /* background-color: #416928; */
+  background-color: #080;
+}
 #factions-addendum #space-marines-check {
   padding: 5px;
   margin-left: 10px;
