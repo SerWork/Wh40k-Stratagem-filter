@@ -40,7 +40,7 @@ function hideAllFactionsStratagemsBlocks() {
 }
 
 function hideAllFactionStratagems() {
-  var all_stratagems = document.getElementsByClassName('stratagems-block__show-when-faction-unselected');
+  var all_stratagems = selectAllStratagems();
   for (let i = 0; i < all_stratagems.length; i++) {
     all_stratagems[i].style.display = 'none';
   }
@@ -96,33 +96,11 @@ function showFactionAddendumBlock(faction_name) {
     default:
       break;
   }
-  
-
-  /* if (faction_name == 'chaos-daemons') {
-    document.getElementById('factions-addendum').style.display = 'flex';
-    document.getElementById('chaos-daemons-allegiance').style.display = 'block';
-  } */
-
-  /* if (document.getElementById('selected-chapter').checked == true) {
-    document.getElementById('space-marines').style.backgroundColor = '#60c';
-    document.getElementById('space-marines').style.color = '#fff';
-    a.style.display = 'none';
-    for (let i = 0; i < z.length; i++) {
-      q[i].style.display = 'none';
-    }
-  } else {
-    document.getElementById('space-marines').style.backgroundColor = '#fff';
-    document.getElementById('space-marines').style.color = '#333';
-    a.style.display = 'block';
-    for (let i = 0; i < z.length; i++) {
-      q[i].style.display = 'block';
-    }
-  }
-  document.getElementById('space-marines').style.transitionDuration = '400ms'; */
 }
 
 function showDaemonAllegianceStratagems() {
   var daemons_allegiance_stratagems;
+  var daemons_select_block = document.getElementById('chaos-daemons-allegiance');
   var allegiance = document.getElementById('chaos-daemons-allegiance').value;
   var stratagems_for_all_allegiance = document.getElementsByClassName('all-daemons-stratagem');
   var chaos_daemons_all_stratagems = document.getElementById('chaos-daemons').getElementsByClassName('stratagems-block__show-when-faction-unselected');
@@ -130,6 +108,25 @@ function showDaemonAllegianceStratagems() {
   uncheckCheckMarks();
   checkMarksDefaultStyle();  
   hideAllFactionStratagems();
+
+  switch (allegiance) {
+    case 'khorne':
+      daemons_select_block.style.backgroundColor = '#b00';
+      break;
+    case 'nurgle':
+      daemons_select_block.style.backgroundColor = '#770';
+      break;
+    case 'slaanesh':
+      daemons_select_block.style.backgroundColor = '#606';
+      break;
+    case 'tzeentch':
+      daemons_select_block.style.backgroundColor = '#3939ac';
+      break;
+  
+    default:
+      daemons_select_block.style.backgroundColor = '#667070';
+      break;
+  }
 
   if (allegiance != 'unaligned') {
     daemons_allegiance_stratagems = document.getElementsByClassName(allegiance + '-daemons-stratagem');
@@ -161,13 +158,12 @@ function showDaemonAllegianceStratagems() {
 }
 
 // --- Orks ---
-
 // Get Orks CLAN name
 function orksClanName() {
   return document.getElementById('orks-addendum-select').value;
 }
 // Get all Orks CLANs stratagems
-function orksAllClansStratagems() {
+function orksAllSpecificClansStratagems() {
   return document.getElementById('orks').getElementsByClassName('orks-clan-stratagem');
 }
 // Get all Orks stratagems
@@ -188,7 +184,7 @@ function showOrksClanStratagems() {
   var orks_clan = orksClanName();
 
   // Select all Orks CLANs stratagems
-  var all_orks_clan_spc_strt = orksAllClansStratagems();
+  var all_orks_clan_spc_strt = orksAllSpecificClansStratagems();
 
   // Select all Orks stratagems
   var all_orks_stratagems = orksAllStratagems();
@@ -206,20 +202,22 @@ function showOrksClanStratagems() {
     all_orks_stratagems[i].style.display = 'block';
   }
 
-  // Hide all CLAN stratagems
-  if (all_orks_clan_spc_strt.length > 0) {
-    for (let i = 0; i < all_orks_clan_spc_strt.length; i++) {
-      all_orks_clan_spc_strt[i].style.display = 'none';
+  if (orks_clan != 'all-clans-stratagems') {
+    // Hide all CLAN stratagems
+    if (all_orks_clan_spc_strt.length > 0) {
+      for (let i = 0; i < all_orks_clan_spc_strt.length; i++) {
+        all_orks_clan_spc_strt[i].style.display = 'none';
+      }
     }
-  }
-
-  if (orks_clan != 'no-clan') { // Show all Orks & CLAN specific stratagems
-    orks_clan_stratagems = orksSpecificClansStratagems();
-
-    // Show CLAN specific stratagems
-    if (orks_clan_stratagems.length > 0) {
-      for (let i = 0; i < orks_clan_stratagems.length; i++) {
-        orks_clan_stratagems[i].style.display = 'block';
+  
+    if (orks_clan != 'no-clan') { // Show all Orks & CLAN specific stratagems
+      orks_clan_stratagems = orksSpecificClansStratagems();
+  
+      // Show CLAN specific stratagems
+      if (orks_clan_stratagems.length > 0) {
+        for (let i = 0; i < orks_clan_stratagems.length; i++) {
+          orks_clan_stratagems[i].style.display = 'block';
+        }
       }
     }
   }
@@ -284,7 +282,7 @@ function showFactionStratagems() {
  */
 function showPhaseStratagems(faction_name, stratagem_type, phase_index) {
   var daemon_allegiance, show_stratagems, hide_stratagems;
-  // var selected_stratagem_type = document.getElementById('');
+  var orks_clan_name = orksClanName();
   var scroll_to_view_str = '.scroll-to-view';
 
   checkMarksDefaultStyle();
@@ -403,21 +401,51 @@ function showPhaseStratagems(faction_name, stratagem_type, phase_index) {
           }
   
           stratagem_type = '.all-daemons-any-phase';
-        } else {
-          // Change stratagem type to '.any-phase'
+        }
+        // --- Orks ---
+        else if (faction_name == 'orks' && orks_clan_name != 'all-clans-stratagems') {
+          // Show Orks all any-phase stratagems
+          show_stratagems = document.getElementById(faction_name).querySelectorAll('.any-phase');
+          if (show_stratagems.length > 0) {
+            for (let i = 0; i < show_stratagems.length; i++) {
+              show_stratagems[i].style.display = 'block';
+            }
+          }
+
+          // Hide Orks all CLAN stratagems
+          show_stratagems = document.getElementById(faction_name).querySelectorAll('.orks-clan-stratagem');
+          if (show_stratagems.length > 0) {
+            for (let i = 0; i < show_stratagems.length; i++) {
+              show_stratagems[i].style.display = 'none';
+            }
+          }
+
+          // Show Orks specific CLAN stratagems
+          show_stratagems = document.getElementById(faction_name).querySelectorAll('.orks-' + orks_clan_name + '-' + stratagem_type);
+          if (show_stratagems.length > 0) {
+            for (let i = 0; i < show_stratagems.length; i++) {
+              show_stratagems[i].style.display = 'block';
+            }
+          }
+
+          // Set Orks specific CLAN any-phase stratagems
+          stratagem_type = '.orks-' + orks_clan_name + '-any-phase';
+        }
+        // --- Set to any-phase stratagems type ---
+        else {
           stratagem_type = '.any-phase';
         }
         
         show_stratagems = document.getElementById(faction_name).querySelectorAll(stratagem_type);
 
-        // Show all '.any-phase' stratagems
+        // Show all ...any-phase stratagems
         if (show_stratagems.length > 0) {
           for (let i = 0; i < show_stratagems.length; i++) {
             show_stratagems[i].style.display = 'block';
           }
         }
 
-        // Scroll to first stratagem of the selected phase
+        // Scroll to view
         document.getElementById(faction_name).querySelector(scroll_to_view_str).scrollIntoView();
       } else {
         // Show faction phase stratagems
@@ -436,8 +464,26 @@ function showPhaseStratagems(faction_name, stratagem_type, phase_index) {
             }
           }
         }
+        // --- Orks ---
+        else if (faction_name == 'orks' && orks_clan_name != 'all-clans-stratagems') {
+          // Hide Orks CLAN stratagems
+          show_stratagems = document.getElementById(faction_name).querySelectorAll('.orks-clan-stratagem');
+          if (show_stratagems.length > 0) {
+            for (let i = 0; i < show_stratagems.length; i++) {
+              show_stratagems[i].style.display = 'none';
+            }
+          }
 
-        // Scroll to first stratagem of the selected phase
+          // Show Orks CLAN specific before-battle stratagems
+          show_stratagems = document.getElementById(faction_name).querySelectorAll('.orks-' + orks_clan_name + '-before-battle-phase');
+          if (show_stratagems.length > 0) {
+            for (let i = 0; i < show_stratagems.length; i++) {
+              show_stratagems[i].style.display = 'block';
+            }
+          }
+        }
+
+        // Scroll to view
         document.getElementById(faction_name).querySelector(scroll_to_view_str).scrollIntoView();
       }
     } else if (stratagem_type != '.before-battle' && stratagem_type != '.' + daemon_allegiance + '-daemons-before-battle') {
@@ -470,26 +516,40 @@ function showPhaseStratagems(faction_name, stratagem_type, phase_index) {
           }
         }
         stratagem_type = '.all-daemons-any-phase';
-        // --- --- ---
-
-      } else {
+      }
+      // --- Set to any-phase stratagems type ---
+      else {
         stratagem_type = '.any-phase';
       }
 
       show_stratagems = document.getElementById(faction_name).querySelectorAll(stratagem_type);
 
       if (show_stratagems.length > 0) {
-        // Show all stratagems with '...any-phase' in the name
+        // Show all any-phase stratagems
         for (let i = 0; i < show_stratagems.length; i++) {
           show_stratagems[i].style.display = 'block';
         }
-        
-        // --- Chaos Daemons ---
-        // if (faction_name == 'chaos-daemons' && selected_stratagem_type != null) {
-        //   document.getElementById(faction_name).querySelector(scroll_to_view_str).scrollIntoView();
-        // }
-        
-        // Scroll to first stratagem of the selected phase
+
+        // --- Orks ---
+        if (faction_name == 'orks' && orks_clan_name != 'all-clans-stratagems') {
+          // Hide Orks CLAN stratagems
+          show_stratagems = document.getElementById(faction_name).querySelectorAll('.orks-clan-stratagem');
+          if (show_stratagems.length > 0) {
+            for (let i = 0; i < show_stratagems.length; i++) {
+              show_stratagems[i].style.display = 'none';
+            }
+          }
+
+          // Show Orks CLAN specific any-phase stratagems
+          show_stratagems = document.getElementById(faction_name).querySelectorAll('.orks-' + orks_clan_name + '-any-phase');
+          if (show_stratagems.length > 0) {
+            for (let i = 0; i < show_stratagems.length; i++) {
+              show_stratagems[i].style.display = 'block';
+            }
+          }
+        }
+
+        // Scroll to view
         document.getElementById(faction_name).querySelector(scroll_to_view_str).scrollIntoView();
       } else {
         document.getElementById('message').innerHTML = 'No stratagems found!';

@@ -31,9 +31,10 @@
     <div class="" id="factions-addendum">
       <!-- Death Guard addendum (bgc #808547) -->
       <select name="death-guard-select" id="death-guard-plague-companies">
-        <option class="default-option" value="none">&lt;PLAGUE COMPANY&gt;</option>
-        <option value=""></option>
-        <option value=""></option>
+        <option class="default-option" value="no-plague-companies">NO PLAGUE COMPANIES</option>
+        <option value="all-plague-companies">ALL PLAGUE COMPANIES</option>
+        <option value="harbingers">- HARBINGERS</option>
+        <option value="the-inexorable">- THE INEXORABLE</option>
         <option value=""></option>
         <option value=""></option>
         <option value=""></option>
@@ -44,22 +45,23 @@
       <!-- Chaos Daemons addendum -->
       <select name="chaos-daemons-select" id="chaos-daemons-allegiance" onchange="showDaemonAllegianceStratagems()">
         <option class="default-option" value="unaligned">ALL DAEMON STRATAGEMS</option>
-        <option value="khorne">KHORNE</option>
-        <option value="tzeentch">TZEENTCH</option>
-        <option value="nurgle">NURGLE</option>
-        <option value="slaanesh">SLAANESH</option>
+        <option value="khorne">- KHORNE</option>
+        <option value="nurgle">- NURGLE</option>
+        <option value="slaanesh">- SLAANESH</option>
+        <option value="tzeentch">- TZEENTCH</option>
       </select>
 
       <!-- Orks addendum -->
       <select class="orks-addendum-selector" name="orks-addendum-select" id="orks-addendum-select" onchange="showOrksClanStratagems()">
         <option class="default-option" value="no-clan">NO CLAN</option>
-        <option class="" value="blood-axe">BLOOD AXE</option>
-        <option class="" value="goff">GOFF</option>
-        <option class="" value="evil-sunz">EVIL SUNZ</option>
-        <option class="" value="bad-moons">BAD MOONS</option>
-        <option class="" value="freebooterz">FREEBOOTERZ</option>
-        <option class="" value="snakebite">SNAKEBITE</option>
-        <option class="" value="deathskulls">DEATHSKULLS</option>
+        <option class="" value="all-clans-stratagems">ALL CLANS</option>
+        <option class="" value="blood-axe">- BLOOD AXE</option>
+        <option class="" value="bad-moons">- BAD MOONS</option>
+        <option class="" value="deathskulls">- DEATHSKULLS</option>
+        <option class="" value="evil-sunz">- EVIL SUNZ</option>
+        <option class="" value="freebooterz">- FREEBOOTERZ</option>
+        <option class="" value="goff">- GOFF</option>
+        <option class="" value="snakebite">- SNAKEBITE</option>
       </select>
 
       
@@ -834,6 +836,18 @@
             Use this Stratagem in the <span class="description-turn-phase">Fight phase</span>, when a <span class="description-unit-type">DEATH GUARD CHARACTER</span> model from your army is selected to fight. Until the <span class="description-turn-phase">end of the phase</span>, each time an enemy model is destroyed by an attack made by that model, roll one D6: on a 3+, that enemy model's unit suffers 1 mortal wound after your model has resolved all of its attacks (a maximum of 3 mortal wounds can be inflicted per phase via this Stratagem).
           </div>
         </div>
+        <div class="fight-phase death-guard-stratagem death-guard-stratagem-fight-phase death-guard-plague-company-stratagem death-harbingers-stratagem death-guard-harbingers-fight-phase stratagems-block__game-phase-9th-ed stratagems-block__show-when-faction-unselected" id="the-wrathful-dead">
+          <h3 class="shared-phase-header-9th-ed">
+            <span>THE WRATHFUL DEAD</span><span>1CP</span>
+          </h3>
+          <div class="fluff">
+            <span class="fluff-faction">Harbingers - Strategic Ploy Stratagem</span><br>
+            The Poxwalker hordes of the 1st Plague Company are as the tide in their offensive, their blows laying tow the living with terrifying inevitability.
+          </div>
+          <div class="description">
+            Use this Stratagem in the <span class="description-turn-phase">Fight phase</span>, when a <span class="description-unit-type">HARBINGERS POXWALKERS</span> unit is selected to fight. Until the <span class="description-turn-phase">end of the phase</span>, each time a model in that unit makes an attack, you can re-roll the hit roll.
+          </div>
+        </div>
       </div>
 
       <!-- Opponent's phases -->
@@ -884,6 +898,18 @@
           </div>
           <div class="description">
             Use this Stratagem <span class="description-turn-phase">in your opponent's Shooting phase</span>, when a <span class="description-unit-type">DEATH GUARD SMOKESCREEN</span> unit from your army is selected as the target of an attack. Until the <span class="description-turn-phase">end of the phase</span>, each time an attack is made against that unit, subtract 1 from that attacks hit roll.
+          </div>
+        </div>
+        <div class="opponent-phase death-guard-stratagem death-guard-stratagem-opponent-phase death-guard-plague-company-stratagem death-guard-the-inexorable-stratagem death-guard-the-inexorable-opponent-phase stratagems-block__game-phase-9th-ed stratagems-block__show-when-faction-unselected" id="ferric-miasma">
+          <h3 class="opponent-turn-stratagem-header-9th-ed">
+            <span>FERRIC MIASMA</span><span>1CP</span>
+          </h3>
+          <div class="fluff">
+            <span class="fluff-faction">Inexorable - Strategic Ploy Stratagem</span><br>
+            As the foe press forward they are engulfed in a whirling storm of fleshrust flakes that clog lungs and eyes.
+          </div>
+          <div class="description">
+            Use this Stratagem <span class="description-turn-phase">in your opponent’s Charge phase</span>, when an <span class="description-unit-type">INEXORABLE</span> unit from your army is selected as a target of a charge. Until the <span class="description-turn-phase">end of the phase</span>, subtract 2 from charge rolls made for any unit that declares a charge against that <span class="description-unit-type">INEXORABLE</span> unit (to a minimum of 1).
           </div>
         </div>
       </div>
@@ -1320,7 +1346,7 @@
           </h3>
           <div class="fluff">
             <span class="fluff-faction">Tzeentch Daemons Stratagem</span><br>
-            A cloud of iridescent light or a charred lump of meat – none foresee the fate of those touched by warpfire.
+            A cloud of iridescent light or a charred lump of meat - none foresee the fate of those touched by warpfire.
           </div>
           <div class="description">
             Use this Stratagem <span class="description-turn-phase">in your Shooting phase</span>. Select one <span class="description-unit-type">FLAMER</span> unit from your army. Until the <span class="description-turn-phase">end of the phase</span>, when resolving an attack made by a model in that unit, an unmodified wound roll of 6 inflicts 1 mortal wound on the target in addition to any other damage.
@@ -1668,7 +1694,7 @@
             Use this Stratagem <span class="description-turn-phase">before the battle</span>. Your army can have one extra <span class="faction-uniq-items">Shiny Gubbinz</span> for 1 CP, or two extra <span class="faction-uniq-items">Shiny Gubbinz</span> for 3 CPs. All of the <span class="faction-uniq-items">Shiny Gubbinz</span> that you include must be different and be given to different <span class="description-unit-type">ORK CHARACTERS</span>. You can only use this Stratagem once per battle.
           </div>
         </div>
-        <div class="before-battle before-battle-8th-ed orks-stratagem orks-before-battle-phase orks-clan-stratagem orks-blood-axe-stratagem stratagems-block__show-when-faction-unselected" id="dead-sneaky">
+        <div class="before-battle before-battle-8th-ed orks-stratagem orks-before-battle-phase orks-clan-stratagem orks-blood-axe-stratagem orks-blood-axe-before-battle-phase stratagems-block__show-when-faction-unselected" id="dead-sneaky">
           <div class="cp-cost">1CP/2CP</div>
           <h3 class="stratagem-header-8th-ed">DEAD SNEAKY</h3>
           <div class="fluff">
@@ -1690,7 +1716,7 @@
             Use this Stratagem <span class="description-turn-phase">before the battle begins</span>. Select a <span class="description-unit-type">BOYZ</span> unit (excluding <span class="description-unit-type">SKARBOYZ</span>) from your army; that unit gains the <span class="description-unit-type">'ARD BOYZ</span> keyword, and the <span class="description-characteristic">Save</span> characteristic of models in that unit is changed to 5+. That unit can only use the <span class="description-faction-ability">Mob Up Stratagem</span> to merge with other units of <span class="description-unit-type">'ARD BOYZ</span>.
           </div>
         </div>
-        <div class="before-battle before-battle-8th-ed orks-stratagem orks-before-battle-phase orks-clan-stratagem orks-goff-stratagem stratagems-block__show-when-faction-unselected" id="skarboyz">
+        <div class="before-battle before-battle-8th-ed orks-stratagem orks-before-battle-phase orks-clan-stratagem orks-goff-stratagem orks-goff-before-battle-phase stratagems-block__show-when-faction-unselected" id="skarboyz">
           <div class="cp-cost">1CP</div>
           <h3 class="stratagem-header-8th-ed">SKARBOYZ</h3>
           <div class="fluff">
@@ -1721,7 +1747,7 @@
           </h3>
           <div class="fluff">
             <span class="fluff-faction">Specialist Detachment Stratagem</span><br>
-            Coming in all shapes and sizes, the clanking monstrosities of a Dread Waaagh! are all designed with one purpose in mind – the utter destruction of their poor, unsuspecting foes.
+            Coming in all shapes and sizes, the clanking monstrosities of a Dread Waaagh! are all designed with one purpose in mind - the utter destruction of their poor, unsuspecting foes.
           </div>
           <div class="description">
             Use this Stratagem when choosing your army. Pick an <span class="description-unit-type">ORK</span> Detachment from your army to be a <span class="description-unit-type">Dread Waaagh! Specialist Detachment</span>. <span class="description-unit-type">BIG MEKS</span>, <span class="description-unit-type">GORKANAUTS</span>, <span class="description-unit-type">MORKANAUTS</span>, <span class="description-unit-type">DEFF DREADS</span> and <span class="description-unit-type">KILLA KANS</span> in that Detachment gain the <span class="description-unit-type">DREAD WAAAGH!</span> keyword.
@@ -1763,7 +1789,7 @@
             Teleporting across the battlefield, this Stompa materialises with all guns blazing and leaves a path of total annihilation in its wake.
           </div>
           <div class="description">
-            Use this Stratagem <span class="description-turn-phase">during deployment</span>. You can set up a <span class="description-unit-type">STOMPA MOB</span> unit from your army on a tellyporta pad instead of placing it on the battlefield. Units on a tellyporta pad can teleport into battle at the <span class="description-turn-phase">end of any of your Movement phases</span> – set them up anywhere on the battlefield that is more than 9" from any enemy models.
+            Use this Stratagem <span class="description-turn-phase">during deployment</span>. You can set up a <span class="description-unit-type">STOMPA MOB</span> unit from your army on a tellyporta pad instead of placing it on the battlefield. Units on a tellyporta pad can teleport into battle at the <span class="description-turn-phase">end of any of your Movement phases</span> - set them up anywhere on the battlefield that is more than 9" from any enemy models.
           </div>
         </div>
         <div class="before-battle before-battle-8th-ed orks-stratagem orks-before-battle-phase stratagems-block__show-when-faction-unselected" id="kustom-job">
@@ -2009,7 +2035,7 @@
             Use this Stratagem at the <span class="description-turn-phase">start of your Shooting phase</span>. Select an <span class="description-unit-type">ORK VEHICLE</span> unit from your army that can <span class="description-faction-ability">FLY</span>. Until the <span class="description-turn-phase">end of the phase</span>, add 1 to hit rolls for shooting attacks made by that unit that target enemy units that can <span class="description-faction-ability">FLY</span>.
           </div>
         </div>
-        <div class="shooting-phase shooting-phase-8th-ed orks-stratagem orks-shooting-phase orks-clan-stratagem orks-evil-sunz-stratagem stratagems-block__show-when-faction-unselected" id="drive-by-krumpin">
+        <div class="shooting-phase shooting-phase-8th-ed orks-stratagem orks-shooting-phase orks-clan-stratagem orks-evil-sunz-stratagem orks-evil-sunz-shooting-phase stratagems-block__show-when-faction-unselected" id="drive-by-krumpin">
           <div class="cp-cost">1CP</div>
           <h3 class="stratagem-header-8th-ed">DRIVE-BY KRUMPIN'</h3>
           <div class="fluff">
@@ -2020,7 +2046,7 @@
             Use this Stratagem at the <span class="description-turn-phase">end of your Shooting phase</span>. Select an <span class="description-unit-type">EVIL SUNZ SPEED FREEKS</span> unit from your army. That unit can immediately make a move as if it were the <span class="description-turn-phase">Movement phase</span>, but cannot charge this turn.
           </div>
         </div>
-        <div class="shooting-phase shooting-phase-8th-ed orks-stratagem orks-shooting-phase orks-clan-stratagem orks-bad-moons-stratagem stratagems-block__show-when-faction-unselected" id="showin-off">
+        <div class="shooting-phase shooting-phase-8th-ed orks-stratagem orks-shooting-phase orks-clan-stratagem orks-bad-moons-stratagem orks-bad-moons-shooting-phase stratagems-block__show-when-faction-unselected" id="showin-off">
           <div class="cp-cost">2CP</div>
           <h3 class="stratagem-header-8th-ed">SHOWIN' OFF</h3>
           <div class="fluff">
@@ -2042,7 +2068,7 @@
             Use this Stratagem before an <span class="description-unit-type">ORK</span> unit from your army shoots <span class="description-turn-phase">in your Shooting phase</span>. Until the <span class="description-turn-phase">end of the phase</span>, that unit's <span class="description-faction-ability">Dakka! Dakka! Dakka!</span> ability triggers on unmodified hit rolls of 5 or 6, instead of 6.
           </div>
         </div>
-        <div class="shooting-phase shooting-phase-8th-ed orks-stratagem orks-shooting-phase orks-clan-stratagem orks-freebooterz-stratagem stratagems-block__show-when-faction-unselected" id="kill-kroozer-broadside">
+        <div class="shooting-phase shooting-phase-8th-ed orks-stratagem orks-shooting-phase orks-clan-stratagem orks-freebooterz-stratagem orks-freebooterz-shooting-phase stratagems-block__show-when-faction-unselected" id="kill-kroozer-broadside">
           <div class="cp-cost">3CP</div>
           <h3 class="stratagem-header-8th-ed">KILL-KROOZER BROADSIDE</h3>
           <div class="fluff">
@@ -2293,7 +2319,7 @@
             Use this Stratagem when a <span class="description-unit-type">VEHICLE</span> unit is destroyed. Select an <span class="description-unit-type">ORK INFANTRY</span> unit from your army that was either within 3" of the vehicle or embarked within it when it was destroyed. Improve the <span class="description-characteristic">Save</span> characteristic of that infantry unit by 1 (e.g. a <span class="description-characteristic">Save</span> characteristic of 6+ will become a <span class="description-characteristic">Save</span> characteristic of 5+), to a maximum of 2+. A unit can only be affected by this Stratagem <span class="description-turn-phase">once per battle</span>, and once affected, cannot be selected for the <span class="description-faction-ability">Mob Up</span> Stratagem. If this Stratagem is used on a <span class="description-unit-type">LOOTAS</span> unit from your army, roll a D6; on a 4+ the CP spent to use this Stratagem is immediately refunded.
           </div>
         </div>
-        <div class="any-phase any-phase-8th-ed orks-stratagem orks-any-phase orks-clan-stratagem orks-snakebite-stratagem stratagems-block__show-when-faction-unselected" id="monster-hunters">
+        <div class="any-phase any-phase-8th-ed orks-stratagem orks-any-phase orks-clan-stratagem orks-snakebite-stratagem orks-snakebite-any-phase stratagems-block__show-when-faction-unselected" id="monster-hunters">
           <div class="cp-cost">3CP</div>
           <h3 class="stratagem-header-8th-ed">MONSTER HUNTERS</h3>
           <div class="fluff">
@@ -2315,7 +2341,7 @@
             Use this Stratagem when an <span class="description-unit-type">ORK CHARACTER</span> model from your army is slain. That model is not removed from the battlefield as normal, and can immediately either shoot as if it were your <span class="description-turn-phase">Shooting phase</span>, or fight as if it were the <span class="description-turn-phase">Fight phase</span>. The slain model is then removed from the battlefield.
           </div>
         </div>
-        <div class="any-phase any-phase-8th-ed orks-stratagem orks-any-phase orks-clan-stratagem orks-deathskulls-stratagem stratagems-block__show-when-faction-unselected" id="wreckers">
+        <div class="any-phase any-phase-8th-ed orks-stratagem orks-any-phase orks-clan-stratagem orks-deathskulls-stratagem orks-deathskulls-any-phase stratagems-block__show-when-faction-unselected" id="wreckers">
           <div class="cp-cost">2CP</div>
           <h3 class="stratagem-header-8th-ed">WRECKERS</h3>
           <div class="fluff">

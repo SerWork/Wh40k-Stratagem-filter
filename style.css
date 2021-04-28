@@ -62,7 +62,8 @@ hr {
   width: 100%;
 }
 #factions-addendum #chaos-daemons-allegiance {
-  background-color: #60c;
+  /* background-color: #60c; */
+  background-color: #667070;
 }
 #factions-addendum #orks-addendum-select {
   /* background-color: #416928; */
