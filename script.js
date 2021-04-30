@@ -562,7 +562,19 @@ function showPhaseStratagems(faction_name, stratagem_type, phase_index) {
   }
 }
 
-// Debug
+// -- Show/Hide scroll to title button
+let scroll_to_title_button = document.getElementsByClassName('to-title')[0];
+scroll_to_title_button.style.display = 'none';
+
+window.onscroll = function () {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    scroll_to_title_button.style.display = 'block';
+  } else {
+    scroll_to_title_button.style.display = 'none';
+  }
+}
+
+// -- Debug
 function debug(param = []) {
   return document.getElementById('value').innerHTML = param;
 }
