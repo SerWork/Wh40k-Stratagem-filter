@@ -178,6 +178,53 @@ li {
 .show-all-stratagems:active {
   background-color: #3266cd;
 }
+
+/* Color tips */
+#color-tip {
+  /* display: none; */
+  background-color: #fff;
+  padding: 5px 10px 0px 10px;
+  border: 2px solid #333;
+  /* border-radius: 5px; */
+  margin-bottom: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: bold;
+  font-size: 85%;
+}
+#color-tip div {
+  margin-bottom: 5px;
+}
+#color-tip i {
+  width: 40px;
+  /* border: 1px dotted red; */
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.clr-grey {
+  background-color: #667070;
+}
+.clr-green {
+  background-color: #2e912e;
+}
+.clr-darkcyan {
+  background-color: #248f8f;
+}
+.clr-red {
+  background-color: #960000;
+}
+.clr-orange {
+  background-color: #cf6300;
+}
+/* 
+clr-grey"></
+clr-green"><
+clr-darkcyan
+clr-red"></i
+clr-orange">
+*/
+
 /* #game-phases .check-mark {
   position: absolute;
   top: 0;
@@ -209,7 +256,7 @@ li {
 
 /* -- 8th-ed -- */
 h3.stratagem-header-8th-ed {
-  margin: 5px 0 0 80px;
+  margin: 5px 0 0 78px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   letter-spacing: 1px;
 }
