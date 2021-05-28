@@ -86,8 +86,9 @@ function showFactionAddendumBlock(faction_name) {
       document.getElementById('factions-addendum').style.display = 'flex';
       document.getElementById('orks-addendum-select').style.display = 'block';
       break;
-    case value:
-      
+    case 'death-guard':
+      document.getElementById('factions-addendum').style.display = 'flex';
+      document.getElementById('death-guard-forces').style.display = 'block';
       break;
     case value:
       
@@ -111,7 +112,7 @@ function showDaemonAllegianceStratagems() {
 
   switch (allegiance) {
     case 'khorne':
-      daemons_select_block.style.backgroundColor = '#b00';
+      daemons_select_block.style.backgroundColor = '#a00';
       break;
     case 'nurgle':
       daemons_select_block.style.backgroundColor = '#770';
@@ -120,7 +121,9 @@ function showDaemonAllegianceStratagems() {
       daemons_select_block.style.backgroundColor = '#606';
       break;
     case 'tzeentch':
-      daemons_select_block.style.backgroundColor = '#3939ac';
+      // daemons_select_block.style.backgroundColor = '#3939ac';
+      // daemons_select_block.style.backgroundColor = '#0040ff';
+      daemons_select_block.style.backgroundColor = '#0039e6';
       break;
   
     default:
@@ -223,6 +226,56 @@ function showOrksClanStratagems() {
   }
 }
 
+// -- Death Guard --
+// -- Show Death Guard Stratagems on option change
+function showDeathGuardStratagems() {
+  let death_guard_stratagems_block = document.getElementById('death-guard');
+  let all_death_guard_stratagems = death_guard_stratagems_block.getElementsByClassName('stratagems-block__show-when-faction-unselected');
+  let death_guard_plague_company_army_name = document.getElementById('death-guard-forces').value;
+  let death_guard_plague_company_stratagems = death_guard_stratagems_block.getElementsByClassName(`death-guard-${death_guard_plague_company_army_name}-stratagem`);
+  let death_guard_all_plague_company_stratagems = death_guard_stratagems_block.getElementsByClassName('death-guard-plague-company-stratagem');
+  let death_guard_terminus_est_stratagems = death_guard_stratagems_block.getElementsByClassName('death-guard-terminus-est-assault-force-stratagem');
+  
+
+  // Show Death Guard stratagems block
+  // death_guard_stratagems_block.style.display = 'block';
+  // Hide all Death Guard stratagems
+  // for (let i = 0; i < all_death_guard_stratagems.length; i++) {
+  //   all_death_guard_stratagems[i].style.display = 'none';
+  // }
+
+  // Show all Death Guard Stratagems
+  if (death_guard_plague_company_army_name != 'no-death-guard-force') {
+    death_guard_stratagems_block.style.display = 'block';
+
+    for (let i = 0; i < all_death_guard_stratagems.length; i++) {
+      all_death_guard_stratagems[i].style.display = 'block';
+    }
+
+    if (death_guard_plague_company_army_name != 'all-death-guard-stratagems') {
+      for (let i = 0; i < death_guard_all_plague_company_stratagems.length; i++) {
+        death_guard_all_plague_company_stratagems[i].style.display = 'none';
+      }
+
+      if (death_guard_plague_company_army_name != 'terminus-est-assault-force') {
+        for (let i = 0; i < death_guard_terminus_est_stratagems.length; i++) {
+          death_guard_terminus_est_stratagems[i].style.display = 'none';
+        }
+        for (let i = 0; i < death_guard_plague_company_stratagems.length; i++) {
+          death_guard_plague_company_stratagems[i].style.display = 'block';
+        }
+      } else {
+        let death_guard_harbingers_stratagems = death_guard_stratagems_block.getElementsByClassName('death-guard-harbingers-stratagem');
+        for (let i = 0; i < death_guard_harbingers_stratagems.length; i++) {
+          death_guard_harbingers_stratagems[i].style.display = 'block';
+        }
+      }
+    }
+  } else {
+    death_guard_stratagems_block.style.display = 'none';
+  }
+}
+
 function showFactionStratagems() {
   var faction = getFactionName();
 
@@ -238,6 +291,8 @@ function showFactionStratagems() {
     showDaemonAllegianceStratagems();
   } else if (faction == 'orks') {
     showOrksClanStratagems();
+  } else if (faction == 'death-guard') {
+    showDeathGuardStratagems();
   } else {  
     // remove :checked from stratagems select option
     uncheckCheckMarks();
@@ -367,6 +422,7 @@ function showPhaseStratagems(faction_name, stratagem_type, phase_index) {
     show_stratagems = document.getElementById(faction_name).querySelectorAll(stratagem_type);
 
     if (show_stratagems.length > 0) {
+      // --- Show all phase stratagems, except Before Battle/During deployment
       if (stratagem_type != '.before-battle' && stratagem_type != '.' + daemon_allegiance + '-daemons-before-battle') {
         // Show faction phase stratagems
         for (let i = 0; i < show_stratagems.length; i++) {
@@ -576,5 +632,6 @@ window.onscroll = function () {
 
 // -- Debug
 function debug(param = []) {
-  return document.getElementById('value').innerHTML = param;
+  document.getElementById('value').innerHTML = param;
+  console.log(param);
 }
