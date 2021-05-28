@@ -477,7 +477,7 @@ function showPhaseStratagems(faction_name, stratagem_type, phase_index) {
           }
 
           // Show Orks specific CLAN stratagems
-          show_stratagems = document.getElementById(faction_name).querySelectorAll('.orks-' + orks_clan_name + '-' + stratagem_type);
+          show_stratagems = document.getElementById(faction_name).querySelectorAll('.orks-' + orks_clan_name + '-' + stratagem_type.replace('.',''));
           if (show_stratagems.length > 0) {
             for (let i = 0; i < show_stratagems.length; i++) {
               show_stratagems[i].style.display = 'block';
