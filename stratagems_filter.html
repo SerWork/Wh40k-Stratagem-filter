@@ -31,7 +31,14 @@
     <div class="" id="factions-addendum">
 
       <!-- Death Guard addendum -->
-      <select name="death-guard-select" id="death-guard-forces" onchange="showDeathGuardStratagems()">
+      <div class="dropdown-block" id="death-guard-dropdown">
+        <button class="drop-down-btn" id="death-guard-dropdown-btn">-- Choose a forces --</button>
+        <div id="death-guard-dropdown-content" class="drop-down-content">
+          <!--  -->
+        </div>
+      </div>
+
+      <!-- <select name="death-guard-select" id="death-guard-forces" onchange="showDeathGuardStratagems()">
         <option class="default-option" value="no-death-guard-force">-- Choose a force --</option>
         <option value="all-death-guard-stratagems">- Show all Death Guard stratagems</option>
         <optgroup class="" label="Plague Companies">
@@ -47,7 +54,7 @@
         <optgroup label="Army of Renown">
           <option value="terminus-est-assault-force">- TERMINUS EST ASSAULT FORCE</option>
         </optgroup>
-      </select>
+      </select> -->
 
       <!-- Chaos Daemons addendum -->
       <select name="chaos-daemons-select" id="chaos-daemons-allegiance" onchange="showDaemonAllegianceStratagems()">

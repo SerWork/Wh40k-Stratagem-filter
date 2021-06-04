@@ -88,7 +88,8 @@ function showFactionAddendumBlock(faction_name) {
       break;
     case 'death-guard':
       document.getElementById('factions-addendum').style.display = 'flex';
-      document.getElementById('death-guard-forces').style.display = 'block';
+      // document.getElementById('death-guard-forces').style.display = 'block';
+      document.getElementById('death-guard-dropdown').style.display = 'block';
       break;
     case value:
       

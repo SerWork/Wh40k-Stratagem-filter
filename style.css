@@ -63,17 +63,39 @@ hr {
   /* background-color: #60c; */
   width: 100%;
 }
+#factions-addendum .dropdown-block {
+  border: 1px solid #333;
+  border-radius: 5px;
+  color: #fff;
+  /* background-color: #60c; */
+  width: 100%;
+}
+#factions-addendum .drop-down-btn/* , #death-guard-forces */ {
+  padding: 5px 0;
+  text-align: center;
+  outline: none;
+  border: 0;
+  width: 100%;
+  color: #fff;
+  font-size: 90%;
+}
+/* -- Chaos Daemons -- */
 #factions-addendum #chaos-daemons-allegiance {
   /* background-color: #60c; */
   background-color: #667070;
 }
+/* -- Orks -- */
 #factions-addendum #orks-addendum-select {
   /* background-color: #416928; */
   background-color: #080;
 }
-#factions-addendum #death-guard-forces {
+/* -- Death guard -- */
+/* #death-guard-dropdown {
+} */
+#death-guard-dropdown-btn {
   background-color: #808547;
 }
+
 #factions-addendum #space-marines-check {
   padding: 5px;
   margin-left: 10px;
