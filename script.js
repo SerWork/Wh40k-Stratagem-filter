@@ -24,6 +24,14 @@ function hideFactionAddendumBlocks() {
     get_addendum_select_blocks[i].style.display = 'none';
   }
 
+  // CRUTCH show/hide Death-guard
+  let dgb = document.querySelector('#death-guard-dropdown');
+  if (document.querySelector('#factions').value == 'death-guard') {
+    dgb.style.display = 'block';
+  } else {
+    dgb.style.display = 'none';
+  }
+
   document.getElementById('factions-addendum').style.display = 'none';
   document.getElementById('space-marines-check').style.display = 'none';
   // document.getElementById('chaos-daemons-allegiance').style.display = 'none';
