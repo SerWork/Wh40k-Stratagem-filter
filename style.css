@@ -18,6 +18,11 @@ p {
   margin-top: 10px;
 }
 
+/* Experimental class to display stratagem blocks */
+.display-block {
+  display: block;
+}
+
 hr {
   height: 2px;
   background-color: #333;

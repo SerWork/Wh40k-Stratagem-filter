@@ -56,7 +56,7 @@ function hideAllFactionStratagems() {
 
 function uncheckCheckMarks() {
   var phases_check = document.getElementById('game-phases').querySelectorAll('.check');
-  for (let i = 0; i < phases_check.length; i++) { 
+  for (let i = 0; i < phases_check.length; i++) {
     if (phases_check[i].checked == true) {
       phases_check[i].checked = false;
     }
@@ -67,7 +67,7 @@ function checkMarksDefaultStyle() {
   var default_bgc = '#fff';
   var default_text_color = '#333'
   var phases_label = document.getElementById('game-phases').getElementsByTagName('label');
-  for (let i = 0; i < phases_label.length; i++) { 
+  for (let i = 0; i < phases_label.length; i++) {
     phases_label[i].style.backgroundColor = default_bgc;
     phases_label[i].style.color = default_text_color;
     phases_label[i].style.borderRadius = '0px';
@@ -302,7 +302,7 @@ function showFactionStratagems() {
     showOrksClanStratagems();
   } else if (faction == 'death-guard') {
     showDeathGuardStratagems();
-  } else {  
+  } else {
     // remove :checked from stratagems select option
     uncheckCheckMarks();
 
